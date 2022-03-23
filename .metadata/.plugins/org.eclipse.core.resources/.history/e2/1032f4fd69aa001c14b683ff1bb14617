@@ -1,0 +1,41 @@
+package com.ssafy.controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.ssafy.model.dto.Dept;
+import com.ssafy.model.service.DeptService;
+
+@WebServlet("/dept_regist.do")
+public class DeptRegistServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		int deptNo = Integer.parseInt(request.getParameter("deptNo"));
+		String dName = request.getParameter("dName");
+		String loc = request.getParameter("loc");
+
+		DeptService deptService = new DeptService();
+		try {
+			deptService.registDept(new Dept(deptNo, dName, loc));
+			// 성공페이지로 이동 => 부서 목록으로 이동 (부서목록 조회하는 컨트롤러로 이동)
+
+			response.sendRedirect("index.jsp");
+			return;
+		} catch (Exception e) {
+			e.printStackTrace();
+			// 에러페이지로 이동 =>
+
+			response.sendRedirect("error.jsp");
+			return;
+		}
+	}
+
+}

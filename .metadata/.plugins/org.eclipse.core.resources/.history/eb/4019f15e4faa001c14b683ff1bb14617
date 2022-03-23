@@ -1,0 +1,31 @@
+package com.ssafy.model.service;
+
+import com.ssafy.dto.Dept;
+
+public class DeptService {
+
+	public boolean registDept(Dept dept) {
+
+	}
+
+	public boolean modifyDept(Dept dept) {
+
+	}
+
+	public boolean removeDept(int deptNo) {
+
+	}
+
+	public Dept getDept(int deptNo) {
+
+	}
+
+	public List<Dept> getDeptList() {
+
+	}
+
+	public List<Dept> getDeptListByName() {
+
+	}
+
+}

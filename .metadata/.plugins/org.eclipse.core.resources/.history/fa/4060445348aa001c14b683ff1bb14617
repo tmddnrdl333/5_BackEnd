@@ -1,0 +1,97 @@
+package happyhouse.model.dto;
+
+public class Notice {
+
+	private int noticeNo;
+	private String member_memberId;
+	private String noticeTitle;
+	private String noticeBody;
+	private String noticeImg;
+	private String noticeCreateDate;
+	private String noticeUpdateDate;
+	private String noticeDeleteDate;
+	
+	public Notice(int noticeNo, String member_memberId, String noticeTitle, String noticeBody, String noticeImg,
+			String noticeCreateDate, String noticeUpdateDate, String noticeDeleteDate) {
+		super();
+		this.noticeNo = noticeNo;
+		this.member_memberId = member_memberId;
+		this.noticeTitle = noticeTitle;
+		this.noticeBody = noticeBody;
+		this.noticeImg = noticeImg;
+		this.noticeCreateDate = noticeCreateDate;
+		this.noticeUpdateDate = noticeUpdateDate;
+		this.noticeDeleteDate = noticeDeleteDate;
+	}
+
+	public int getNoticeNo() {
+		return noticeNo;
+	}
+
+	public void setNoticeNo(int noticeNo) {
+		this.noticeNo = noticeNo;
+	}
+
+	public String getMember_memberId() {
+		return member_memberId;
+	}
+
+	public void setMember_memberId(String member_memberId) {
+		this.member_memberId = member_memberId;
+	}
+
+	public String getNoticeTitle() {
+		return noticeTitle;
+	}
+
+	public void setNoticeTitle(String noticeTitle) {
+		this.noticeTitle = noticeTitle;
+	}
+
+	public String getNoticeBody() {
+		return noticeBody;
+	}
+
+	public void setNoticeBody(String noticeBody) {
+		this.noticeBody = noticeBody;
+	}
+
+	public String getNoticeImg() {
+		return noticeImg;
+	}
+
+	public void setNoticeImg(String noticeImg) {
+		this.noticeImg = noticeImg;
+	}
+
+	public String getNoticeCreateDate() {
+		return noticeCreateDate;
+	}
+
+	public void setNoticeCreateDate(String noticeCreateDate) {
+		this.noticeCreateDate = noticeCreateDate;
+	}
+
+	public String getNoticeUpdateDate() {
+		return noticeUpdateDate;
+	}
+
+	public void setNoticeUpdateDate(String noticeUpdateDate) {
+		this.noticeUpdateDate = noticeUpdateDate;
+	}
+
+	public String getNoticeDeleteDate() {
+		return noticeDeleteDate;
+	}
+
+	public void setNoticeDeleteDate(String noticeDeleteDate) {
+		this.noticeDeleteDate = noticeDeleteDate;
+	}
+
+	@Override
+	public String toString() {
+		return "Notice [noticeNo=" + noticeNo + ", member_memberId=" + member_memberId + ", noticeTitle=" + noticeTitle
+				+ ", noticeBody=" + noticeBody + ", noticeImg=" + noticeImg + ", noticeCreateDate=" + noticeCreateDate
+				+ ", noticeUpdateDate=" + noticeUpdateDate + ", noticeDeleteDate=" + noticeDeleteDate + "]";
+	}
+}

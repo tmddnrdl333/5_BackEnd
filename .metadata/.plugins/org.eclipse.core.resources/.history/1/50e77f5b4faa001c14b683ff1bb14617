@@ -1,0 +1,12 @@
+package com.ssafy.model.service;
+
+public class DeptService {
+
+	public boolean registDept(Dept dept) {
+
+	}
+
+	public boolean modifyDept(Dept dept) {
+
+	}
+}

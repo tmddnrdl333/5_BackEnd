@@ -1,0 +1,88 @@
+package com.ssafy.dto;
+
+public class Comment {
+	
+	private int commentNo;
+	private int noticeinfo_noticeinfoCode;
+	private String member_memberId;
+	private String commentText;
+	private String commentCreateDate;
+	private String commentUpdateDate;
+	private String commentDeleteDate;
+	
+	public Comment(int commentNo, int noticeinfo_noticeinfoCode, String member_memberId, String commentText,
+			String commentCreateDate, String commentUpdateDate, String commentDeleteDate) {
+		super();
+		this.commentNo = commentNo;
+		this.noticeinfo_noticeinfoCode = noticeinfo_noticeinfoCode;
+		this.member_memberId = member_memberId;
+		this.commentText = commentText;
+		this.commentCreateDate = commentCreateDate;
+		this.commentUpdateDate = commentUpdateDate;
+		this.commentDeleteDate = commentDeleteDate;
+	}
+	
+	public int getCommentNo() {
+		return commentNo;
+	}
+	
+	public void setCommentNo(int commentNo) {
+		this.commentNo = commentNo;
+	}
+	
+	public int getNoticeinfo_noticeinfoCode() {
+		return noticeinfo_noticeinfoCode;
+	}
+	
+	public void setNoticeinfo_noticeinfoCode(int noticeinfo_noticeinfoCode) {
+		this.noticeinfo_noticeinfoCode = noticeinfo_noticeinfoCode;
+	}
+	
+	public String getMember_memberId() {
+		return member_memberId;
+	}
+	
+	public void setMember_memberId(String member_memberId) {
+		this.member_memberId = member_memberId;
+	}
+	
+	public String getCommentText() {
+		return commentText;
+	}
+	
+	public void setCommentText(String commentText) {
+		this.commentText = commentText;
+	}
+	
+	public String getCommentCreateDate() {
+		return commentCreateDate;
+	}
+	
+	public void setCommentCreateDate(String commentCreateDate) {
+		this.commentCreateDate = commentCreateDate;
+	}
+	
+	public String getCommentUpdateDate() {
+		return commentUpdateDate;
+	}
+	
+	public void setCommentUpdateDate(String commentUpdateDate) {
+		this.commentUpdateDate = commentUpdateDate;
+	}
+	
+	public String getCommentDeleteDate() {
+		return commentDeleteDate;
+	}
+	
+	public void setCommentDeleteDate(String commentDeleteDate) {
+		this.commentDeleteDate = commentDeleteDate;
+	}
+	
+	@Override
+	public String toString() {
+		return "Comment [commentNo=" + commentNo + ", noticeinfo_noticeinfoCode=" + noticeinfo_noticeinfoCode
+				+ ", member_memberId=" + member_memberId + ", commentText=" + commentText + ", commentCreateDate="
+				+ commentCreateDate + ", commentUpdateDate=" + commentUpdateDate + ", commentDeleteDate="
+				+ commentDeleteDate + "]";
+	}
+}

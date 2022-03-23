@@ -1,0 +1,12 @@
+package happyhous.mode.main;
+
+import happyhouse.model.dao.houseinfoDAO;
+
+public class Main {
+
+	public static void main(String[] args) {
+		houseinfoDAO dao = new houseinfoDAO();
+//		System.out.println("삽입 : "+dao.insertDept(new Dept(70, "총무부", "서울")));
+		System.out.println(dao.selectHouseinfo(2890151));
+	}
+}
