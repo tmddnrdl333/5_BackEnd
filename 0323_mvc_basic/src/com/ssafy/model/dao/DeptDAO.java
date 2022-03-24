@@ -94,7 +94,7 @@ public class DeptDAO {
 	public boolean deleteDept(int deptNo) throws SQLException {
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		String sql = "delete from dept where dept = ?";
+		String sql = "delete from dept where deptno = ?";
 		try {
 			conn = DBUtil.getConnection();
 			stmt = conn.prepareStatement(sql);

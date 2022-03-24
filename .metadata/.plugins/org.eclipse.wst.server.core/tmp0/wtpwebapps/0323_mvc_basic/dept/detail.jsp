@@ -16,7 +16,7 @@
 <jsp:include page="/menu.jsp"></jsp:include>
 	<h2>부서 상세 조회</h2>
 	<form method="post"
-		action="<%=request.getContextPath()%>/dept/modify.do">
+		action="<%=request.getContextPath()%>/dept/modify_form.do">
 		<table>
 			<tbody>
 				<tr>

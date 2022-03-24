@@ -19,7 +19,7 @@ public class DeptService {
 	}
 
 	public boolean modifyDept(Dept dept) throws SQLException {
-		if (getDept(dept.getDeptno()) != null) {
+		if (getDept(dept.getDeptno()) == null) {
 			throw new IllegalArgumentException("등록된 부서가 없습니다.");
 		}
 		return deptDao.updateDept(dept);
@@ -27,7 +27,7 @@ public class DeptService {
 
 	public boolean removeDept(int deptNo) throws SQLException {
 		if (getDept(deptNo) == null) {
-			return false;
+			throw new IllegalArgumentException("등록된 부서가 없습니다.");
 		}
 		return deptDao.deleteDept(deptNo);
 	}
