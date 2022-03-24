@@ -6,11 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>list.jsp입니당</title>
 <link href="<%=request.getContextPath()%>/css/table1.css"
 	rel="stylesheet">
 </head>
 <body>
+<jsp:include page="/menu.jsp"></jsp:include>
 	<h1>부서 목록</h1>
 	<table>
 		<thead>
@@ -26,7 +27,8 @@
 			%>
 			<tr>
 				<td><%=dept.getDeptno()%></td>
-				<td><%=dept.getDname()%></td>
+				<td><a
+					href="<%=request.getContextPath()%>/dept/detail.do?deptNo=<%=dept.getDeptno()%>"><%=dept.getDname()%></a></td>
 			</tr>
 			<%
 				}

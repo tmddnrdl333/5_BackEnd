@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>error.jsp입니당</title>
 </head>
 <body>
+<jsp:include page="/menu.jsp"></jsp:include>
 	<%
 		String errorMsg = (String) request.getAttribute("errorMsg");
 		Exception e = (Exception) request.getAttribute("exception");

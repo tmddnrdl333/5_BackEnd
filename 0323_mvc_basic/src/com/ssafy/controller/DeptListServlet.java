@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ssafy.model.dto.Dept;
 import com.ssafy.model.service.DeptService;
 
-// @WebServlet("/dept/list.do")
+// @WebServlet("/dept/list.do") // xml에 list.ssafy도 추가했음.
 public class DeptListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

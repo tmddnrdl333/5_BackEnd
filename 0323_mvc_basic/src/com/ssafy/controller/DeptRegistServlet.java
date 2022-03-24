@@ -36,6 +36,8 @@ public class DeptRegistServlet extends HttpServlet {
 			request.setAttribute("exception", e);
 			request.setAttribute("errorMsg", "부서 등록에 실패했습니다.");
 			request.getRequestDispatcher("/error.jsp").forward(request, response);
+			// 위 경로는 getContextPath하면 안됨!
+			// 이유 : 주체가 브라우저가 아니라 서버니까 이미 App Root에 있는 상태
 			return;
 		}
 	}

@@ -10,12 +10,12 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-  	<servlet-name>DeptListServlet</servlet-name>
-  	<servlet-class>com.ssafy.controller.DeptListServlet</servlet-class>
+    <servlet-name>DeptListServlet</servlet-name>
+    <servlet-class>com.ssafy.controller.DeptListServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>DeptListServlet</servlet-name>
-  	<url-pattern>/dept/list.do</url-pattern>
-  	<url-pattern>/dept/list.ssafy</url-pattern>
+    <servlet-name>DeptListServlet</servlet-name>
+    <url-pattern>/dept/list.do</url-pattern>
+    <url-pattern>/dept/list.ssafy</url-pattern>
   </servlet-mapping>
 </web-app>

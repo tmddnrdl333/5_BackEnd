@@ -9,6 +9,7 @@
 	rel="stylesheet">
 </head>
 <body>
+<jsp:include page="/menu.jsp"></jsp:include>
 	<h2>부서 등록</h2>
 	<form method="post"
 		action="<%=request.getContextPath()%>/dept/regist.do">

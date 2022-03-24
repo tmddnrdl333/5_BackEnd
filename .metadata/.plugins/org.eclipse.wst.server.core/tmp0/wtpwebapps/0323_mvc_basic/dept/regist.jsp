@@ -4,11 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>regist.jsp입니당</title>
 <link href="<%=request.getContextPath()%>/css/table1.css"
 	rel="stylesheet">
 </head>
 <body>
+<jsp:include page="/menu.jsp"></jsp:include>
 	<h2>부서 등록</h2>
 	<form method="post"
 		action="<%=request.getContextPath()%>/dept/regist.do">
