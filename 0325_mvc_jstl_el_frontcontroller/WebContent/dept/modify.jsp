@@ -18,7 +18,7 @@
 				<tr>
 					<th>부서 번호</th>
 					<td><input type="text" name="deptNo" required="required"
-						readonly="readonly" value="${requestScope.dept.deptno}" /></td>
+						readonly="readonly" value="${dept.deptno}" /></td>
 				</tr>
 				<tr>
 					<th>부서 이름</th>

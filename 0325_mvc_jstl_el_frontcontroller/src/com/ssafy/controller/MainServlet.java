@@ -61,6 +61,12 @@ public class MainServlet extends HttpServlet {
 				pageInfo = deptRegist(request, response);
 			} else if (url.equals("/dept/regist_form.do")) {
 				pageInfo = deptRegistForm(request, response);
+			} else if (url.equals("/dept/modify_form.do")) {
+				pageInfo = deptModifyForm(request, response);
+			} else if (url.equals("/dept/modify.do")) {
+				pageInfo = deptModify(request, response);
+			}else if (url.equals("/dept/remove.do")) {
+				pageInfo = deptRemove(request, response);
 			}
 
 			if (pageInfo.isForward()) {
@@ -164,6 +170,48 @@ public class MainServlet extends HttpServlet {
 	private PageInfo deptRegistForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		return new PageInfo(true, "/dept/regist.jsp");
 	}
-	
-	
+
+	private PageInfo deptModifyForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int deptNo = Integer.parseInt(request.getParameter("deptNo"));
+		DeptService deptService = new DeptService();
+		try {
+			Dept dept = deptService.getDept(deptNo);
+			request.setAttribute("dept", dept);
+
+			return new PageInfo(true, "/dept/modify.jsp");
+		} catch (SQLException e) {
+			// 에러페이지로 이동
+			request.setAttribute("errorMsg", "부서 상세조회에 실패했습니다.");
+			throw e;
+		}
+
+	}
+
+	private PageInfo deptModify(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int deptNo = Integer.parseInt(request.getParameter("deptNo"));
+		String dName = request.getParameter("dName");
+		String loc = request.getParameter("loc");
+		try {
+			deptService.modifyDept(new Dept(deptNo, dName, loc));
+			// 성공페이지로 이동 => 부서 목록으로 이동 (부서목록 조회하는 컨트롤러로 이동)
+			return new PageInfo(false, "/dept/list.do");
+		} catch (Exception e) {
+			// 에러페이지로 이동 =>
+			request.setAttribute("errorMsg", "부서 수정에 실패했습니다.");
+			throw e;
+		}
+	}
+
+	private PageInfo deptRemove(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int deptNo = Integer.parseInt(request.getParameter("deptNo"));
+		try {
+			deptService.removeDept(deptNo);
+			// 성공페이지로 이동 => 부서 목록으로 이동 (부서목록 조회하는 컨트롤러로 이동)
+			return new PageInfo(false, "/dept/list.do");
+		} catch (Exception e) {
+			// 에러페이지로 이동 =>
+			request.setAttribute("errorMsg", "부서 삭제에 실패했습니다.");
+			throw e;
+		}
+	}
 }
