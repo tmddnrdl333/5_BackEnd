@@ -31,7 +31,24 @@ public class UserDAO {
 			DBUtil.close(conn);
 		}
 		return null;
+	}
 
-		
+	public boolean signin(String id, String pass, String name, String email) throws SQLException {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		String sql = "insert into userinfo values(?,?,?,?)";
+		try {
+			conn = DBUtil.getConnection();
+			stmt = conn.prepareStatement(sql);
+
+			stmt.setString(1, id);
+			stmt.setString(2, pass);
+			stmt.setString(3, name);
+			stmt.setString(4, email);
+			int rowCount = stmt.executeUpdate();
+			return rowCount > 0;
+		} finally {
+			DBUtil.close(stmt, conn);
+		}
 	}
 }

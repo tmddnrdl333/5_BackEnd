@@ -5,16 +5,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>login.jsp입니당</title>
+<title>signin.jsp입니당</title>
 </head>
 <body>
 	<c:if test="${errorMsg!=null}">
 		<div style="color: red">에러내용 : ${errorMsg}</div>
 	</c:if>
-	<form action="${root}/user/login.do"	method="post">
+	<form action="${root}/user/signin.do"	method="post">
 		id : <input type="text" name="id" /> <br />
 		password : <input type="password" name="pass" /> <br />
-		<input type="submit" value="로그인" />
+		name : <input type="text" name="name" /> <br />
+		email : <input type="email" name="email" /> <br />
+		<input type="submit" value="회원가입" />
 		<input type="reset" value="취소" />
 	</form>
 </body>

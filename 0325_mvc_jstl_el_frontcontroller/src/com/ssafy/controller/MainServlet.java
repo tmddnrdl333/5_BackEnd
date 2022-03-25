@@ -65,8 +65,12 @@ public class MainServlet extends HttpServlet {
 				pageInfo = deptModifyForm(request, response);
 			} else if (url.equals("/dept/modify.do")) {
 				pageInfo = deptModify(request, response);
-			}else if (url.equals("/dept/remove.do")) {
+			} else if (url.equals("/dept/remove.do")) {
 				pageInfo = deptRemove(request, response);
+			} else if (url.equals("/user/signin_form.do")) {
+				pageInfo = deptSigninForm(request, response);
+			} else if (url.equals("/user/signin.do")) {
+				pageInfo = deptSignin(request, response);
 			}
 
 			if (pageInfo.isForward()) {
@@ -214,4 +218,26 @@ public class MainServlet extends HttpServlet {
 			throw e;
 		}
 	}
+
+	private PageInfo deptSigninForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return new PageInfo(false, "/signin.jsp");
+	}
+
+	private PageInfo deptSignin(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String id = request.getParameter("id");
+		String pass = request.getParameter("pass");
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+
+		UserService userService = new UserService();
+		try {
+			userService.signin(id, pass, name, email);
+			return new PageInfo(false, "/index.jsp");
+		} catch (Exception e) {
+			// 에러페이지로 이동 =>
+			request.setAttribute("errorMsg", "회원가입에 실패했습니다.");
+			throw e;
+		}
+	}
+
 }
