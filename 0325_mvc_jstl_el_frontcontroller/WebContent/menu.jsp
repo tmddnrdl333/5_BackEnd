@@ -10,7 +10,10 @@
 		</div>
 	</c:when>
 	<c:otherwise>
-		<div>${userName}횐님 안농? <a href="${root}/auth/logout.do">로그아웃</a></div>
+		<div>${userName} 횐님 안농?
+			<a href="${root}/auth/logout.do">로그아웃</a>
+			<a href="${root}/auth/userinfo.do">회원정보</a>
+		</div>
 	</c:otherwise>
 </c:choose>
 <hr />

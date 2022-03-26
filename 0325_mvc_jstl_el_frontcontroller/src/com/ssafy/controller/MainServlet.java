@@ -68,9 +68,11 @@ public class MainServlet extends HttpServlet {
 			} else if (url.equals("/dept/remove.do")) {
 				pageInfo = deptRemove(request, response);
 			} else if (url.equals("/user/signin_form.do")) {
-				pageInfo = deptSigninForm(request, response);
+				pageInfo = signinForm(request, response);
 			} else if (url.equals("/user/signin.do")) {
-				pageInfo = deptSignin(request, response);
+				pageInfo = signin(request, response);
+			} else if (url.equals("/auth/userinfo.do")) {
+				pageInfo = userInfo(request, response);
 			}
 
 			if (pageInfo.isForward()) {
@@ -108,7 +110,7 @@ public class MainServlet extends HttpServlet {
 				return new PageInfo(false, "/index.jsp");
 			} else {
 				request.setAttribute("errorMsg", "아이디나 비밀번호가 일치하지 않습니다.");
-				return new PageInfo(true, "/login.jsp");
+				return new PageInfo(true, "/user/login.jsp");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -118,7 +120,7 @@ public class MainServlet extends HttpServlet {
 	}
 
 	private PageInfo loginForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		return new PageInfo(true, "/login.jsp");
+		return new PageInfo(true, "/user/login.jsp");
 	}
 
 	private PageInfo logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -219,11 +221,11 @@ public class MainServlet extends HttpServlet {
 		}
 	}
 
-	private PageInfo deptSigninForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		return new PageInfo(false, "/signin.jsp");
+	private PageInfo signinForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return new PageInfo(false, "/user/signin.jsp");
 	}
 
-	private PageInfo deptSignin(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	private PageInfo signin(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String id = request.getParameter("id");
 		String pass = request.getParameter("pass");
 		String name = request.getParameter("name");
@@ -240,4 +242,9 @@ public class MainServlet extends HttpServlet {
 		}
 	}
 
+	private PageInfo userInfo(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		UserService userService = new UserService();
+		
+		return new PageInfo(false, "/auth/userinfo.jsp");
+	}
 }

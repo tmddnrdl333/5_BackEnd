@@ -33,7 +33,7 @@ public class UserDAO {
 		return null;
 	}
 
-	public boolean signin(String id, String pass, String name, String email) throws SQLException {
+	public void signin(String id, String pass, String name, String email) throws SQLException {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		String sql = "insert into userinfo values(?,?,?,?)";
@@ -45,10 +45,11 @@ public class UserDAO {
 			stmt.setString(2, pass);
 			stmt.setString(3, name);
 			stmt.setString(4, email);
-			int rowCount = stmt.executeUpdate();
-			return rowCount > 0;
+			stmt.executeUpdate();
 		} finally {
 			DBUtil.close(stmt, conn);
 		}
 	}
+	// userinfo 구현, 세션에서 정보 가져와서 select해서 뿌리기
+	// 여기(DAO)와 Service와 MainServlet에도 구현하기
 }

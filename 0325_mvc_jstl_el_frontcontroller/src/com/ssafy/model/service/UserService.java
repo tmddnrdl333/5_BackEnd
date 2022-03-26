@@ -12,7 +12,8 @@ public class UserService {
 		return userDao.login(id, pass);
 	}
 
-	public boolean signin(String id, String pass, String name, String email) throws SQLException {
-		return userDao.signin(id, pass, name, email);
+	public void signin(String id, String pass, String name, String email) throws SQLException {
+		userDao.signin(id, pass, name, email);
+		return;
 	}
 }
