@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.ssafy.model.dto.Dept;
 import com.ssafy.model.dto.PageInfo;
+import com.ssafy.model.dto.User;
 import com.ssafy.model.service.DeptService;
 import com.ssafy.model.service.UserService;
 
@@ -73,6 +74,8 @@ public class MainServlet extends HttpServlet {
 				pageInfo = signin(request, response);
 			} else if (url.equals("/auth/userinfo.do")) {
 				pageInfo = userInfo(request, response);
+			} else if (url.equals("/auth/userinfo_modify.do")) {
+//				pageInfo = userInfoModify(request, response);
 			}
 
 			if (pageInfo.isForward()) {
@@ -84,7 +87,6 @@ public class MainServlet extends HttpServlet {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
 			// 에러 페이지로 이동
 			e.printStackTrace();
 			request.setAttribute("exception", e);
@@ -120,7 +122,7 @@ public class MainServlet extends HttpServlet {
 	}
 
 	private PageInfo loginForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		return new PageInfo(true, "/user/login.jsp");
+		return new PageInfo(false, "/user/login.jsp");
 	}
 
 	private PageInfo logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -230,10 +232,11 @@ public class MainServlet extends HttpServlet {
 		String pass = request.getParameter("pass");
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
+		User user = new User(id, pass, name, email);
 
 		UserService userService = new UserService();
 		try {
-			userService.signin(id, pass, name, email);
+			userService.signin(user);
 			return new PageInfo(false, "/index.jsp");
 		} catch (Exception e) {
 			// 에러페이지로 이동 =>
@@ -244,7 +247,20 @@ public class MainServlet extends HttpServlet {
 
 	private PageInfo userInfo(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		UserService userService = new UserService();
-		
-		return new PageInfo(false, "/auth/userinfo.jsp");
+		String id = (String) request.getSession().getAttribute("userId");
+		System.out.println(userService.userInfo(id));
+		request.setAttribute("userinfo", userService.userInfo(id));
+		return new PageInfo(true, "/auth/userinfo.jsp");
 	}
+
+	// 회원정보수정 그냥 userinfo에서 바로 할 건지 아니면 따로 또 페이지 만들건지 (비밀번호 수정 때문에..ㅋㅋ 근데 안해도 어차피 기능적인 부분은 확인 될듯)
+	// 그리고 service랑 dao에도 추가해줘야 실행될듯ㄴ
+//	private PageInfo userInfoModify(HttpServletRequest request, HttpServletResponse response) throws Exception {
+//		UserService userService = new UserService();
+//		String name = "";
+//		String email = "";
+//		System.out.println(userService.userInfo(id));
+//		request.setAttribute("userinfo", userService.userInfo(id));
+//		return new PageInfo(true, "/auth/userinfo.jsp");
+//	}
 }
