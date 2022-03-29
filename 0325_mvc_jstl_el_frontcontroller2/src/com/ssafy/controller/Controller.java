@@ -7,6 +7,6 @@ import com.ssafy.model.dto.PageInfo;
 
 // sub controller가 지녀야하는 기능에 대한 interface
 public interface Controller {
-	public PageInfo process(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public Object process(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 }

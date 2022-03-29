@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+import com.ssafy.model.dto.DataInfo;
 import com.ssafy.model.dto.PageInfo;
 
 @WebServlet(value = "*.do", loadOnStartup = 1)
@@ -41,7 +43,7 @@ public class MainServlet extends HttpServlet {
 		// 요청 url에 따른 요청처리 컨트롤러 분기처리
 		try {
 			String url = request.getServletPath();
-			PageInfo pageInfo = null;
+			Object resInfo = null;
 			System.out.println("url : " + url);
 
 			if (url.startsWith("/dept")) {
@@ -53,18 +55,32 @@ public class MainServlet extends HttpServlet {
 			}
 
 			if (url.startsWith("/user")) {
-				pageInfo = userController.process(request, response);
+				resInfo = userController.process(request, response);
 			} else if (url.startsWith("/dept")) {
-				pageInfo = deptController.process(request, response);
+				resInfo = deptController.process(request, response);
 			}
-
-			if (pageInfo.isForward()) {
-				request.getRequestDispatcher(pageInfo.getUrl()).forward(request, response);
-				return;
+			
+			if(resInfo instanceof PageInfo) {
+				PageInfo pageInfo = (PageInfo) resInfo;
+				if (pageInfo.isForward()) {
+					request.getRequestDispatcher(pageInfo.getUrl()).forward(request, response);
+					return;
+				} else {
+					response.sendRedirect(request.getContextPath() + pageInfo.getUrl());
+					return;
+				}				
 			} else {
-				response.sendRedirect(request.getContextPath() + pageInfo.getUrl());
-				return;
+				DataInfo dataInfo = (DataInfo) resInfo;
+				String contentType = dataInfo.getContentType();
+				
+				response.setContentType(contentType);
+				if(contentType.startsWith("application/json")) {
+					Gson gson = new Gson();
+					response.getWriter().println(gson.toJson(dataInfo.getData()));
+				}
 			}
+			
+
 
 		} catch (Exception e) {
 			// 에러 페이지로 이동

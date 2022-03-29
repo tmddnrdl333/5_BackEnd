@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ssafy.model.dto.DataInfo;
 import com.ssafy.model.dto.Dept;
 import com.ssafy.model.dto.PageInfo;
 import com.ssafy.model.service.DeptService;
@@ -15,12 +16,16 @@ public class DeptController implements Controller {
 	DeptService deptService = new DeptService();
 
 	@Override
-	public PageInfo process(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public Object process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String subUrl = request.getServletPath().substring(5);
 		if (subUrl.equals("/list.do")) {
 			return deptList(request, response);
+		} else if (subUrl.equals("/rest/list.do")) {
+			return deptRestList(request, response); // datainfo 얘만
 		} else if (subUrl.equals("/detail.do")) {
 			return deptDetail(request, response);
+		} else if (subUrl.equals("/rest/detail.do")) {
+			return deptRestDetail(request, response);
 		} else if (subUrl.equals("/regist.do")) {
 			return deptRegist(request, response);
 		} else if (subUrl.equals("/regist_form.do")) {
@@ -33,6 +38,15 @@ public class DeptController implements Controller {
 			return deptRemove(request, response);
 		}
 		return null;
+	}
+
+	private DataInfo deptRestDetail(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+		int deptNo = Integer.parseInt(request.getParameter("deptNo"));
+		return new DataInfo("application/json;charset=utf-8", deptService.getDept(deptNo));
+	}
+
+	private DataInfo deptRestList(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+		return new DataInfo("application/json;charset=utf-8", deptService.getDeptList());
 	}
 
 	private PageInfo deptList(HttpServletRequest request, HttpServletResponse response) throws Exception {
