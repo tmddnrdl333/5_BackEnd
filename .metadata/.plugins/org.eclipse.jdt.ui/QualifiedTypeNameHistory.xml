@@ -9,4 +9,5 @@
 <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 <fullyQualifiedTypeName name="com.ssafy.model.service.UserService"/>
 <fullyQualifiedTypeName name="com.ssafy.model.dto.User"/>
+<fullyQualifiedTypeName name="com.google.gson.Gson"/>
 </qualifiedTypeNameHistroy>
