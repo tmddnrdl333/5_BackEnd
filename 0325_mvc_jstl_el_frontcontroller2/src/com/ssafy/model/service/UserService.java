@@ -3,11 +3,12 @@ package com.ssafy.model.service;
 import java.sql.SQLException;
 
 import com.ssafy.model.dao.UserDAO;
+import com.ssafy.model.dao.UserDAOImpl;
 import com.ssafy.model.dto.User;
 
 public class UserService {
 
-	private UserDAO userDao = new UserDAO();
+	private UserDAO userDao = new UserDAOImpl();
 
 	public String login(String id, String pass) throws SQLException {
 		return userDao.login(id, pass);

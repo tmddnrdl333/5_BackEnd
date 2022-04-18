@@ -4,11 +4,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.ssafy.model.dao.DeptDAO;
+import com.ssafy.model.dao.DeptDAOImpl;
 import com.ssafy.model.dto.Dept;
 
 public class DeptService {
 
-	private DeptDAO deptDao = new DeptDAO();
+	private DeptDAO deptDao = new DeptDAOImpl();
 
 	// 원래는 사용자정의 예외를 만들어서 throw해줘야 controller에서 catch해서 처리해주는 방법을 쓰는 게 좋음.
 	public boolean registDept(Dept dept) throws SQLException {
