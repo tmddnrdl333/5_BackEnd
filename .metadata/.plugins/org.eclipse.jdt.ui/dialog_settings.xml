@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<item value="true" key="Replace"/>
+	<item value="true" key="Annotations"/>
+	<item value="true" key="Comments"/>
+	<item value="false" key="InstanceOf"/>
 	<section name="org.eclipse.ltk.ui.refactoring.settings">
 		<item value="false" key="renameSubpackages"/>
 		<item value="false" key="updateQualifiedNames"/>
